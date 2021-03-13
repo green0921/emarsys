@@ -1,0 +1,39 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
+
+buildscript {
+	ext {
+		springBootVersion = '2.3.6.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("javax.servlet:javax.servlet-api:4.0.1")
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+archivesBaseName = "time-app"
+group = 'com.company'
+version = '1.0.0-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+war {
+	enabled = true
+}
+
+dependencies {
+
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
